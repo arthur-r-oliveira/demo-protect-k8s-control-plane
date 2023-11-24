@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-k8s-buggy-app
+  name: demo-k8s-buggy
   labels:
-    app: demo-k8s-buggy-app
+    app: demo-k8s-buggy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo-k8s-buggy-app
+      app: demo-k8s-buggy
   template:
     metadata:
       labels:
-        app: demo-k8s-buggy-app
+        app: demo-k8s-buggy
     spec:
       containers:
-      - name: demo-k8s-buggy-app
+      - name: demo-k8s-buggy
         image: quay.io/rhn_support_arolivei/demo-k8s-buggy-app:1.0.0
         securityContext:
           allowPrivilegeEscalation: false

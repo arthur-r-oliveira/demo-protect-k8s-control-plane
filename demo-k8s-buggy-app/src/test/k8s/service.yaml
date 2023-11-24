@@ -1,11 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-svc-k8s-buggy-app
+  labels:
+    app: demo-k8s-buggy
+  name: demo-k8s-buggy
+  namespace: demo-k8s
 spec:
-  selector:
-    app.kubernetes.io/name: demo-k8s-buggy-app
   ports:
-    - name: http
-      protocol: TCP
-      port: 8080
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: demo-k8s-buggy
+  type: ClusterIP
