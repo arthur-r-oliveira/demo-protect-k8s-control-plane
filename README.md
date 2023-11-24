@@ -61,6 +61,8 @@ demo-k8s-buggy-app/src/
 
 ### Deploy the APP POD (public registry)
 
+**Note: Ensure DNS resolution of MicroShift node IP to demo-k8s-buggy-demo-k8s.apps.example.com host**
+
 ~~~
 $ oc apply -f demo-k8s-buggy-app/src/test/k8s/namespace.yml
 $ oc apply -f demo-k8s-buggy-app/src/test/k8s/deployment.yml
