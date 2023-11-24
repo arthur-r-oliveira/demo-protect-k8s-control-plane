@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-svc-k8s-buggy-app
+spec:
+  selector:
+    app.kubernetes.io/name: demo-k8s-buggy-app
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080

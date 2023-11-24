@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-k8s-buggy-app
+  labels:
+    app: demo-k8s-buggy-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-k8s-buggy-app
+  template:
+    metadata:
+      labels:
+        app: demo-k8s-buggy-app
+    spec:
+      containers:
+      - name: demo-k8s-buggy-app
+        image: quay.io/rhn_support_arolivei/demo-k8s-buggy-app:1.0.0
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+        runAsNonRoot: true
+        seccompProfile:
+        type: RuntimeDefault
+        ports:
+        - containerPort: 8080
