@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: demo-k8s-buggy
-        image: quay.io/rhn_support_arolivei/demo-k8s-buggy-app:1.0.0
+        image: quay.io/rhn_support_arolivei/demo-k8s-buggy-app:1.0.1
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
