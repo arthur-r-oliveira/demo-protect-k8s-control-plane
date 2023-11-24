@@ -14,6 +14,7 @@ Repo with experiments to crash and protect baseOS and MicroShift control-plane
       - [Trigger memory leak](#trigger-memory-leak)
         - [Observe the system crash](#observe-the-system-crash)
   - [Memory Allocation at crash:](#memory-allocation-at-crash)
+    - [Test again, with Memory limit ranges](#test-again-with-memory-limit-ranges)
 
 
 ## demo-k8s-buggy-app 
@@ -321,4 +322,49 @@ user	0m0.001s
 sys	0m0.003s
 ~~~
 
+
+### Test again, with Memory limit ranges
+
+
+~~~
+$ cat limits.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-limit-range
+spec:
+  limits:
+  - default:
+      memory: 512Mi
+    defaultRequest:
+      memory: 256Mi
+    type: Container
+
+$ oc apply -f limits.yaml 
+limitrange/mem-limit-range created
+
+$ oc get pods -o yaml|grep -A 5 resources
+      resources:
+        limits:
+          memory: 512Mi
+        requests:
+          memory: 256Mi
+      securityContext:
+
+[root@microshift01 ~]# time ps auxwwwf|egrep -i 'COMMAND|quarkus'
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root       50810  0.0  0.0   3332  1756 pts/0    S+   19:27   0:00  |                   \_ grep -E --color=auto -i COMMAND|quarkus
+1000130+   50608  0.0  1.2 994964 44916 ?        Ssl  19:26   0:00  \_ ./application -Dquarkus.http.host=0.0.0.0
+
+real	0m0.027s
+user	0m0.006s
+sys	0m0.024s
+~~~
+
+Now the control-plane reacted much faster to the buggy POD, not affecting another services in the node:
+~~~
+$ oc get pods 
+NAME                              READY   STATUS      RESTARTS      AGE
+demo-k8s-buggy-745cf66f44-m9wss   0/1     OOMKilled   1 (96s ago)   4m47s
+~~~
 
