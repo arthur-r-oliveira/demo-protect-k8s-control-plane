@@ -2,6 +2,20 @@
 
 Repo with experiments to crash and protect baseOS and MicroShift control-plane
 
+- [demo-protect-ushift-control-plane](#demo-protect-ushift-control-plane)
+  - [demo-k8s-buggy-app](#demo-k8s-buggy-app)
+    - [Quick start with quarkus CLI](#quick-start-with-quarkus-cli)
+      - [Changed files](#changed-files)
+    - [Build the App](#build-the-app)
+      - [Build native](#build-native)
+      - [Build image](#build-image)
+      - [Push image to some registry](#push-image-to-some-registry)
+    - [Deploy the APP POD (public registry)](#deploy-the-app-pod-public-registry)
+      - [Trigger memory leak](#trigger-memory-leak)
+        - [Observe the system crash](#observe-the-system-crash)
+  - [Memory Allocation at crash:](#memory-allocation-at-crash)
+
+
 ## demo-k8s-buggy-app 
 
 Based on Quarkus RESTEasy, it provides the following endpoint to generate CPU and Memory leaks. 
