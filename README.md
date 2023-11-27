@@ -152,6 +152,10 @@ $ curl -v -I http://demo-svc-k8s-buggy-app-demo-k8s.apps.example.com/memory-leak
 
 ##### Observe the system crash 
 
+As per documented with upstream k8s [if you do not specify a memory limit](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit), the Container could use all of the memory available on the Node where it is running which in turn could invoke the OOM Killer. The problem with it is that a some point, due high memory allocation, the scheduled node could become so slower that turns into [`NotReady`](https://kubernetes.io/docs/reference/node/node-status/#node-status-fields) state.
+
+This could cause unavalability of services with Single Node or shared control plane K8s deployments, as routers and another ingress services maybe affected during the peak of memory consumption, and before OOM Killer start working.
+
 Open multiple SSH terminals to the RHDE system to observe the system crashing.
 
 ~~~
@@ -324,6 +328,9 @@ sys	0m0.003s
 
 
 #### Test again, with Memory limit ranges
+
+[_The Container is running in a namespace that has a default memory limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the memory limit._](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit).
+
 
 
 ~~~
