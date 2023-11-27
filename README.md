@@ -331,6 +331,7 @@ sys	0m0.003s
 
 [_The Container is running in a namespace that has a default memory limit, and the Container is automatically assigned the default limit. Cluster administrators can use a LimitRange to specify a default value for the memory limit._](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit).
 
+See more about with k8s upstream doc [_Configure Default Memory Requests and Limits for a Namespace_](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/#before-you-begin).
 
 
 ~~~
