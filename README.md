@@ -1,8 +1,8 @@
-# demo-protect-ushift-control-plane
+# demo-protect-k8s-control-plane
 
-Repo with experiments to crash and protect baseOS and MicroShift control-plane
+Repo with experiments to crash and protect baseOS and K8s control-plane
 
-- [demo-protect-ushift-control-plane](#demo-protect-ushift-control-plane)
+- [demo-protect-k8s-control-plane](#demo-protect-k8s-control-plane)
   - [demo-k8s-buggy-app](#demo-k8s-buggy-app)
     - [Quick start with quarkus CLI](#quick-start-with-quarkus-cli)
       - [Changed files](#changed-files)
