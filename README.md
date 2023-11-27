@@ -13,8 +13,8 @@ Repo with experiments to crash and protect baseOS and MicroShift control-plane
     - [Deploy the APP POD (public registry)](#deploy-the-app-pod-public-registry)
       - [Trigger memory leak](#trigger-memory-leak)
         - [Observe the system crash](#observe-the-system-crash)
-  - [Memory Allocation at crash:](#memory-allocation-at-crash)
-    - [Test again, with Memory limit ranges](#test-again-with-memory-limit-ranges)
+        - [Memory Allocation at crash:](#memory-allocation-at-crash)
+      - [Test again, with Memory limit ranges](#test-again-with-memory-limit-ranges)
 
 
 ## demo-k8s-buggy-app 
@@ -166,7 +166,7 @@ Initial Memory allocation:
 - 971.64 MiB of VSZ, virtual memory size of the process in KiB (1024-byte units).
 - 44.15 MiB of RSS, resident set size, the non-swapped physical memory that a task has used (in kilobytes).
 
-Memory Allocation at crash: 
+##### Memory Allocation at crash: 
 - 
 - 2145.71 MiB of RSS
 
@@ -323,7 +323,7 @@ sys	0m0.003s
 ~~~
 
 
-### Test again, with Memory limit ranges
+#### Test again, with Memory limit ranges
 
 
 ~~~
