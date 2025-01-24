@@ -1,4 +1,4 @@
-# demo-protect-k8s-control-plane
+# demo-protect-k8s-single-node-control-plane
 
 Repo with experiments to crash and protect baseOS and single-node K8s control-plane
 
